@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block main_content %}
+
+    <h1>Your Cart</h1>
+    {% if cart %}
+        <table>
+            <tr>
+                <th scope = "col">Pack Id:</th>
+                <th scope = "col"># Months Purchasing:</th>
+                <th scope = "col">Add/Remove:</th>
+            </tr>
+            {% for pack_id in cart %}
+                <tr>
+                    <td>{{ pack_id }}</td>
+                    <td>{{ cart[pack_id] }}</td>
+                    <td><a href="{{ url_for('add_to_cart', pack_id=pack_id) }}">+</a>  <a href="{{ url_for('remove_from_cart', pack_id=pack_id) }}">-</a></td>
+                </tr>
+            {% endfor %}
+        </table>
+
+        <a href="{{ url_for('clearCart') }}">Empty Cart</a>
+        <a href="{{ url_for('purchase') }}">Purchase</a>
+        {% else %}
+            <p>No subscriptions currently in cart.</p>
+        {% endif %}
+        
+{% endblock %}

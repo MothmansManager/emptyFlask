@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block main_content %}
+
+    <h1>Buds!</h1>
+        
+        <section id="flex-grid">
+        {% for user_id in matches %}
+                <!-- simple if statement that checks the data recieved from DB and choses .png based on option selected in forms -->
+                <section id = "Profile">
+                    {% if user_id["icon"] == 'Snake' %}
+                        <img class="profileicon" src="{{ url_for('static', filename= 'Snake.png') }}" alt="Snake" style="width:250px; height:250px"/>
+                    {% elif user_id["icon"] == 'Rose' %}
+                        <img class="profileicon" src="{{ url_for('static', filename='Daisy.png') }}" alt="Daisy" style="width:250px; height:250px"/>
+                    {% elif user_id["icon"] == 'Monstera' %}
+                        <img class="profileicon" src="{{ url_for('static', filename='Monstera.png') }}" alt="Monstera" style="width:250px; height:250px"/>
+                    {% elif user_id["icon"] == 'Cactus' %}
+                        <img class="profileicon" src="{{ url_for('static', filename='Cactus.png') }}" alt="Cactus" style="width:250px; height:250px"/>
+                    {% else %}
+                        <img class="profileicon" src="{{ url_for('static', filename='Leaf.png') }}" alt="Leaf" style="width:250px; height:250px"/>
+                    {% endif %}
+                    
+                    <ul>
+                        <!-- unordered list that displays users info under their icon -->
+                        <li><p>{{ user_id["first_name"] }}</p></li>
+                        <li><p>{{ user_id["gender"] }}</p></li>
+                        <li><p>Bio: {{ user_id["bio"] }}</p></li>
+                    </ul>
+                </section>
+        {% endfor %}
+        </section>
+{% endblock %}

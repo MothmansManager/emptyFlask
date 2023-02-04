@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block main_content %}
+
+    {% if g.user %}
+        <h1> Welcome Back, {{ g.user }}!</h1>
+        
+        <p>
+            Here at Budding Friendships we want you to connect with other like minded plant lovers.
+        </p>
+        <h2>Site Guide:</h2>
+        <ol>
+            <li>
+                <p>
+            Don't forget to set up your <a href="{{ url_for('profileSetup') }}">profile</a>, select an icon and write a bio! 
+                </p>
+            </li>
+            <li>
+                <p>Then head over to <a href="{{ url_for('matches') }}">See Buds</a> to view others who have visited this site and created a public profile.</p>
+                <p>
+                    Share your favourite plant in your bio and a little information about yourself. 
+                    Please feel free to add your social media usernames in your bio to connect with some cool buds. Please be kind when writing your bios as no one likes a prick (it's a cactus pun, get it?)
+                </p>
+                <p>You may update your profile at any time and it will instantly change your public profile, so feel free to keep it fresh!</p>
+            </li>
+            <li>
+                <p>
+                    Purchases can be made by first visiting <a href="{{ url_for('subscriptions') }}">Donation Service</a>, selecting a pack, and then adding to cart.
+                </p>
+                <p><a href="{{ url_for('cartFunc') }}">The cart</a> is where you will finalise the purchase. Past purchases may be viewed on the <a href="{{ url_for('myProfile') }}">"My Profile"</a> page.</p>  
+            </li>
+        </ol>
+
+        <p>
+            We hope you enjoy the website and have a wonderful experience!
+        </p>
+     
+    {% else %}
+        <h1> Welcome to Budding Friendships!</h1>
+        <p>
+            We are so glad to welcome you to our site and hope you can make a few new fronds. Take your first step by creating an account, or if you already have one, 
+            press the login button to access the rest of the site.
+        </p>
+        <p>Here you can create a custom profile for others to see, see others profiles and interests as well as donate through our creators totally real subscription-based service
+            to give continued support to our growth and flowering :)
+        </p>
+        
+    {% endif %}   
+    
+{% endblock %}

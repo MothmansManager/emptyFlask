@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>
+            Budding Friendships
+        </title>
+        <link rel="stylesheet" href="{{ url_for('static', filename = 'style.css') }}" />
+        <link rel="icon" href = "{{ url_for('static', filename = 'leaf.ico') }}">
+    </head>
+    <body>
+        <header>
+            <h1><a href="{{url_for('index')}}">Budding Friendships</a></h1>
+        </header>
+        <nav>
+            {% if g.user %}
+                <p>User ID: {{ g.user }}</p>
+                <p><a href="{{ url_for('myProfile') }}">View My Profile</a></p>
+                <p><a href="{{ url_for('profileSetup') }}">Edit My Profile</a></p>
+                <p><a href="{{ url_for('matches') }}">See Buds</a></p>
+                <p><a href="{{ url_for('subscriptions') }}">Donation Service</a></p>
+                <p><a href="{{ url_for('cartFunc') }}">View Shopping Cart</a></p>
+                <p><a href="{{ url_for('logout') }}">Logout</a></p>
+            {% else %}
+                <p><a href="{{ url_for('register') }}">Register</a></p>
+                <p><a href="{{ url_for('login') }}">Login</a></p>
+            {% endif %}   
+        </nav>
+        <main>
+            {% block main_content %}
+            {% endblock %}
+        </main>
+        <footer>
+            <p><small>Website Created by Cian Hodnett for Web Development 2 @ UCC</small></p>
+            <p><small>Any Images Used Were Drawn by Cian Hodnett</small></p>
+        </footer>
+    </body>
+
+</html>

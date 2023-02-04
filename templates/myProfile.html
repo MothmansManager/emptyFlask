@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block main_content %}
+    <h1>My Profile</h1>
+    <section id = "myProfile">
+        <!-- simple if statement that checks the data recieved from DB and choses .png based on option selected in forms -->
+        {% if myProfile["icon"] == 'Snake' %}
+            <img class="profileicon" src="{{ url_for('static', filename= 'Snake.png') }}" alt="Snake" style="width:250px; height:250px"/>
+            {% elif myProfile["icon"] == 'Daisy' %}
+                <img class="profileicon" src="{{ url_for('static', filename='Daisy.png') }}" alt="Daisy" style="width:250px; height:250px"/>
+            {% elif myProfile["icon"] == 'Monstera' %}
+                <img class="profileicon" src="{{ url_for('static', filename='Monstera.png') }}" alt="Monstera" style="width:250px; height:250px"/>
+            {% elif myProfile["icon"] == 'Cactus' %}
+                <img class="profileicon" src="{{ url_for('static', filename='Cactus.png') }}" alt="Cactus" style="width:250px; height:250px"/>
+            {% else %}
+                <img class="profileicon" src="{{ url_for('static', filename='Leaf.png') }}" alt="leaf" style="width:250px; height:250px"/>
+        {% endif %}
+
+        <ul>
+            <li><p>{{ myProfile["first_name"] }}</p></li>
+            <li><p>{{ myProfile["gender"] }}</p></li>
+            <li><p>Bio: {{ myProfile["bio"] }}</p></li>
+        </ul>
+
+        <p><a href="{{ url_for('profileSetup') }}">Edit My Profile</a></p>
+    </section>
+    
+    <h2>My Purchases</h2>
+    <table>
+        <tr>
+            <th scope = "col">User ID:</th>
+            <th scope = "col"># Purchased:</th>
+        </tr>
+        {% for purchases in myPurchases %}
+            <tr>
+                <td>{{ purchases["user_id"] }}</td>
+                <td>{{ purchases["purchasedAmount"] }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+
+
+
+{% endblock %}

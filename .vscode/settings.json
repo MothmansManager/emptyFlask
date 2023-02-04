@@ -1,0 +1,11 @@
+{
+    "cSpell.ignoreWords": [
+        "flask_session",
+        "security"
+    ],
+    "cSpell.words": [
+        "flask_session",
+        "security",
+        "werkzeug"
+    ]
+}

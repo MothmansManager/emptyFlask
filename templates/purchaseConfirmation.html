@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block main_content %}
+
+    <h2>Order Confirmed!</h2>
+    <p>Thanks for making a purchase {{ user_id }}! This really helps my imaginary bank account!</p>
+
+    <p>Purchases can be seen on the <a href="{{ url_for('myProfile') }}">view profile</a> page</p>
+
+{% endblock %}

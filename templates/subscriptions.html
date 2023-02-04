@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block main_content %}
+
+    <h1>Subscription Catalog</h1>
+    <table>
+        {% for subscription in subscriptions %}
+            <tr>
+                <td>{{ subscription["pack_name"] }}</td>
+                <td>{{ subscription["pack_price"] }}</td>
+                <td>{{ subscription["description"] }}</td>
+                <td>
+                    <a href="{{ url_for('subscription', pack_id=subscription['pack_id']) }}">Details</a>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+
+{% endblock %}
